@@ -40,7 +40,7 @@ var obj = {
   }
 };
 var keys = stringify(obj);
-//=> ['a', 'b.c']
+//=> ['a', 'b', 'b.c']
 ```
 
 
