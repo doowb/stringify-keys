@@ -22,7 +22,7 @@ var stringify = require('stringify-keys');
 ```
 
 ## API
-### [stringify](index.js#L33)
+### [stringify](index.js#L34)
 
 Build an array of key paths from an object.
 
@@ -41,6 +41,8 @@ var obj = {
 };
 var keys = stringify(obj);
 //=> ['a', 'b.c']
+```
+
 
 ## Contributing
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/doowb/stringify-keys/issues)

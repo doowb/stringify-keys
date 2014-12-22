@@ -22,6 +22,7 @@ module.exports = stringify;
  * };
  * var keys = stringify(obj);
  * //=> ['a', 'b.c']
+ * ```
  *
  * @param  {String} `base` Base to add to the path (used in recursion)
  * @param  {Object} `obj`  Object to use
