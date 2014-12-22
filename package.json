@@ -1,7 +1,7 @@
 {
   "name": "stringify-keys",
   "description": "Build an array of key paths from an object.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/doowb/stringify-keys",
   "author": {
     "name": "Brian Woodward",
