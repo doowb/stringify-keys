@@ -27,6 +27,7 @@ module.exports = stringify;
  * @param  {Object} `obj`  Object to use
  * @param  {String} `sep`  Use a different seperator than '.'
  * @return {Array} Array of key paths
+ * @api public
  */
 
 function stringify(base, obj, sep) {

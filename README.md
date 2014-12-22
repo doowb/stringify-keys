@@ -18,11 +18,29 @@ npm test
 ## Usage
 
 ```js
-var stringifyKeys = require('stringify-keys');
+var stringify = require('stringify-keys');
 ```
 
 ## API
+### [stringify](index.js#L33)
 
+Build an array of key paths from an object.
+
+* `base` **{String}**: Base to add to the path (used in recursion)    
+* `obj` **{Object}**: Object to use    
+* `sep` **{String}**: Use a different seperator than '.'    
+* `returns` **{Array}**: Array of key paths  
+
+```js
+var stringify = require('stringify-keys');
+var obj = {
+  a: 'A',
+  b: {
+    c: 'C'
+  }
+};
+var keys = stringify(obj);
+//=> ['a', 'b.c']
 
 ## Contributing
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/doowb/stringify-keys/issues)
