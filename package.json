@@ -31,5 +31,21 @@
   "devDependencies": {
     "mocha": "*",
     "should": "*"
-  }
+  },
+  "dependencies": {
+    "is-plain-object": "^1.0.0"
+  },
+  "keywords": [
+    "dot",
+    "keys",
+    "nested",
+    "notation",
+    "object",
+    "path",
+    "paths",
+    "recurse",
+    "recursive",
+    "separator",
+    "stringify"
+  ]
 }
