@@ -16,18 +16,36 @@
   },
   "license": {
     "type": "MIT",
-    "url": "https://github.com/doowb/stringify-keys/blob/master/LICENSE-MIT"
+    "url": "https://github.com/doowb/stringify-keys/blob/master/LICENSE"
   },
+  "files": [
+    "index.js"
+  ],
   "main": "index.js",
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha"
   },
   "devDependencies": {
     "mocha": "*",
     "should": "*"
   },
-  "keywords": []
+  "dependencies": {
+    "is-plain-object": "^1.0.0"
+  },
+  "keywords": [
+    "dot",
+    "keys",
+    "nested",
+    "notation",
+    "object",
+    "path",
+    "paths",
+    "recurse",
+    "recursive",
+    "separator",
+    "stringify"
+  ]
 }

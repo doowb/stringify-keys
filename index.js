@@ -1,53 +1,39 @@
 /*!
  * stringify-keys <https://github.com/doowb/stringify-keys>
  *
- * Copyright (c) 2014 Brian Woodward, contributors.
- * Licensed under the MIT license.
+ * Copyright (c) 2014-2015, Brian Woodward.
+ * Licensed under the MIT License.
  */
 
 'use strict';
 
-module.exports = stringify;
+var isObject = require('is-plain-object');
+
+module.exports = function stringifyKeys(obj, sep) {
+  return stringify(obj, sep || '.');
+};
 
 /**
- * Build an array of key paths from an object.
+ * Stringify the nested keys of `object` into dot-notation
+ * object paths.
  *
- * ```js
- * var stringify = require('stringify-keys');
- * var obj = {
- *   a: 'A',
- *   b: {
- *     c: 'C'
- *   }
- * };
- * var keys = stringify(obj);
- * //=> ['a', 'b', 'b.c']
- * ```
- *
- * @param  {String} `base` Base to add to the path (used in recursion)
- * @param  {Object} `obj`  Object to use
- * @param  {String} `sep`  Use a different seperator than '.'
- * @return {Array} Array of key paths
- * @api public
+ * @param  {Object} `object` The object to recurse
+ * @param  {String} `separator` Separator to use. Default is `.`
+ * @return {Array} Returns an array of object paths.
  */
 
-function stringify(base, obj, sep) {
-  if (typeof base === 'object') {
-    sep = obj;
-    obj = base;
-    base = '';
-  }
-  sep = sep || '.';
-  var results = [];
-  var keys = Object.keys(obj);
-  var len = keys.length;
-  var i = 0;
-  while (len--) {
-    var key = keys[i++];
-    results.push((base.length === 0 ? key : base + sep + key));
-    if (typeof obj[key] === 'object') {
-      results = results.concat(stringify((base.length === 0 ? key : base + sep + key), obj[key], sep));
+function stringify(obj, sep, res, prev) {
+  res = res || [];
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      var val = obj[key];
+      if (prev) key = (prev + sep + key);
+
+      if(isObject(val)) {
+        stringify(val, sep, res, key);
+      }
+      res.push(key);
     }
   }
-  return results;
+  return res;
 }
