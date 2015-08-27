@@ -27,7 +27,8 @@ function stringify(obj, sep, res, prev) {
   for (var key in obj) {
     if (obj.hasOwnProperty(key)) {
       var val = obj[key];
-      if (prev) key = (prev + sep + key);
+      if (prev) key = (prev + sep + escape(key, sep));
+      if (!prev) key = escape(key, sep);
 
       if(isObject(val)) {
         stringify(val, sep, res, key);
@@ -36,4 +37,8 @@ function stringify(obj, sep, res, prev) {
     }
   }
   return res;
+}
+
+function escape(key, sep) {
+  return key.split(sep).join('\\' + sep);
 }
