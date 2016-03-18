@@ -1,7 +1,7 @@
 /*!
  * stringify-keys <https://github.com/doowb/stringify-keys>
  *
- * Copyright (c) 2014-2015, Brian Woodward.
+ * Copyright (c) 2014-2016, Brian Woodward.
  * Licensed under the MIT License.
  */
 
@@ -24,13 +24,13 @@ module.exports = function stringifyKeys(obj, sep) {
 
 function stringify(obj, sep, res, prev) {
   res = res || [];
-  for (var key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      var val = obj[key];
-      if (prev) key = (prev + sep + escape(key, sep));
-      if (!prev) key = escape(key, sep);
+  for (var prop in obj) {
+    if (obj.hasOwnProperty(prop)) {
+      var val = obj[prop];
+      var key = prev ? prev + sep : '';
+      key += escape(prop, sep);
 
-      if(isObject(val)) {
+      if (isObject(val)) {
         stringify(val, sep, res, key);
       }
       res.push(key);
