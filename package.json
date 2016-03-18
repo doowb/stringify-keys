@@ -3,21 +3,12 @@
   "description": "Build an array of key paths from an object.",
   "version": "0.3.0",
   "homepage": "https://github.com/doowb/stringify-keys",
-  "author": {
-    "name": "Brian Woodward",
-    "url": "https://github.com/doowb"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/doowb/stringify-keys.git"
-  },
+  "author": "Brian Woodward (https://github.com/doowb)",
+  "repository": "doowb/stringify-keys",
   "bugs": {
     "url": "https://github.com/doowb/stringify-keys/issues"
   },
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/doowb/stringify-keys/blob/master/LICENSE"
-  },
+  "license": "MIT",
   "files": [
     "index.js"
   ],
@@ -47,5 +38,10 @@
     "recursive",
     "separator",
     "stringify"
-  ]
+  ],
+  "verb": {
+    "related": {
+      "list": []
+    }
+  }
 }
