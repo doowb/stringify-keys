@@ -20,7 +20,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "is-plain-object": "^1.0.0"
+    "is-plain-object": "^2.0.1"
   },
   "devDependencies": {
     "gulp-format-md": "^0.1.7",
@@ -50,6 +50,14 @@
     "plugins": [
       "gulp-format-md"
     ],
+    "related": {
+      "list": [
+        "glob-object",
+        "expand-object",
+        "isobject",
+        "is-plain-object"
+      ]
+    },
     "reflinks": [
       "verb"
     ],
