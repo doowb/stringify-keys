@@ -1,6 +1,7 @@
 'use strict';
 
-var should = require('should');
+require('mocha');
+require('should');
 var stringify = require('./');
 
 describe('stringify-keys', function() {

@@ -23,8 +23,9 @@
     "is-plain-object": "^1.0.0"
   },
   "devDependencies": {
-    "mocha": "*",
-    "should": "*"
+    "gulp-format-md": "^0.1.7",
+    "mocha": "^2.4.5",
+    "should": "^8.2.2"
   },
   "keywords": [
     "dot",
@@ -40,8 +41,20 @@
     "stringify"
   ],
   "verb": {
-    "related": {
-      "list": []
+    "run": true,
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "reflinks": [
+      "verb"
+    ],
+    "lint": {
+      "reflinks": true
     }
   }
 }
