@@ -1,8 +1,8 @@
 /*!
  * stringify-keys <https://github.com/doowb/stringify-keys>
  *
- * Copyright (c) 2014-2016, Brian Woodward.
- * Licensed under the MIT License.
+ * Copyright (c) 2014-2018, Brian Woodward.
+ * Released under the MIT License.
  */
 
 'use strict';
