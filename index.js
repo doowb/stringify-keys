@@ -7,38 +7,46 @@
 
 'use strict';
 
-var isObject = require('is-plain-object');
-
-module.exports = function stringifyKeys(obj, sep) {
-  return stringify(obj, sep || '.');
-};
+var typeOf = require('kind-of');
 
 /**
  * Stringify the nested keys of `object` into dot-notation
  * object paths.
  *
- * @param  {Object} `object` The object to recurse
- * @param  {String} `separator` Separator to use. Default is `.`
+ * @param  {Object} `object` The object to stringify
+ * @param  {Object|String} `options` Options with `separator` to use. Default is `.`.
  * @return {Array} Returns an array of object paths.
  */
 
-function stringify(obj, sep, res, prev) {
-  res = res || [];
-  for (var prop in obj) {
-    if (obj.hasOwnProperty(prop)) {
-      var val = obj[prop];
-      var key = prev ? prev + sep : '';
-      key += escape(prop, sep);
+module.exports = function(target, options) {
+  if (typeof options === 'string') {
+    options = { separator: options };
+  }
 
-      if (isObject(val)) {
-        stringify(val, sep, res, key);
+  var opts = Object.assign({ separator: '.' }, options);
+  var sep = opts.separator;
+  var acc = [];
+
+  function stringify(obj, prev) {
+    var keys = Object.keys(obj);
+
+    for (var i = 0; i < keys.length; i++) {
+      var key = keys[i];
+      var val = obj[key];
+
+      key = (prev ? prev + sep : '') + escape(key, sep);
+
+      if (typeOf(val) === 'object') {
+        stringify(val, key);
       }
-      res.push(key);
+      acc.push(key);
     }
   }
-  return res;
-}
 
-function escape(key, sep) {
-  return key.split(sep).join('\\' + sep);
+  stringify(target);
+  return acc;
+};
+
+function escape(key, separator) {
+  return key.split(separator).join('\\' + separator);
 }
