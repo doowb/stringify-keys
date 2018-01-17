@@ -24,7 +24,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "is-plain-object": "^2.0.4"
+    "kind-of": "^6.0.2"
   },
   "devDependencies": {
     "gulp-format-md": "^1.0.0",
@@ -50,6 +50,12 @@
     "tasks": [
       "readme"
     ],
+    "data": {
+      "author": {
+        "twitter": "doowb",
+        "linkedin": "woodwardbrian"
+      }
+    },
     "plugins": [
       "gulp-format-md"
     ],
@@ -57,13 +63,9 @@
       "list": [
         "expand-object",
         "glob-object",
-        "is-plain-object",
-        "isobject"
+        "kind-of"
       ]
     },
-    "reflinks": [
-      "verb"
-    ],
     "lint": {
       "reflinks": true
     }
