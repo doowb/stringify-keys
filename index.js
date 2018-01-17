@@ -34,7 +34,7 @@ module.exports = function(target, options) {
       var key = keys[i];
       var val = obj[key];
 
-      key = (prev ? prev + sep : '') + escape(key, sep);
+      key = (prev ? prev + sep : '') + escape(key, opts);
 
       if (typeOf(val) === 'object') {
         stringify(val, key);
@@ -47,6 +47,9 @@ module.exports = function(target, options) {
   return acc;
 };
 
-function escape(key, separator) {
-  return key.split(separator).join('\\' + separator);
+function escape(key, options) {
+  if (typeof options.escape === 'function') {
+    return options.escape(key, options);
+  }
+  return key.split(options.separator).join('\\' + options.separator);
 }
