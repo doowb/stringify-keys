@@ -33,10 +33,11 @@ module.exports = function(target, options) {
     for (var i = 0; i < keys.length; i++) {
       var key = keys[i];
       var val = obj[key];
+      var type = typeOf(val);
 
       key = (prev ? prev + sep : '') + escape(key, opts);
 
-      if (typeOf(val) === 'object') {
+      if (type === 'object' || type === 'array') {
         stringify(val, key);
       }
       acc.push(key);
