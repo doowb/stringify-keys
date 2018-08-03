@@ -6,6 +6,7 @@
   "author": "Brian Woodward (https://github.com/doowb)",
   "contributors": [
     "Brian Woodward (https://twitter.com/doowb)",
+    "contra (http://contra.io)",
     "Jon Schlinkert (http://twitter.com/jonschlinkert)"
   ],
   "repository": "doowb/stringify-keys",
