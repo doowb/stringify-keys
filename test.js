@@ -29,11 +29,16 @@ describe('stringify-keys', function() {
     var obj = {a: 'A', b: {c: 'C', c2: {d: 'D'}, c3: {d: 'D'} }, d: {e: {f: {g: 'G', h: 'H'}}}};
     assert.deepEqual(stringify(obj, '-'), [ 'a', 'b-c', 'b-c2-d', 'b-c2', 'b-c3-d', 'b-c3', 'b', 'd-e-f-g', 'd-e-f-h', 'd-e-f', 'd-e', 'd' ]);
   });
+
+  it('should return an array for a simple object that contains an array', function() {
+    var obj = {a: 'A', b: 'B', c: 'C', d: [{a: 123, b: 123, c: 123}]};
+    assert.deepEqual(stringify(obj), [ 'a', 'b', 'c', 'd.0.a', 'd.0.b', 'd.0.c', 'd.0', 'd' ]);
+  });
 });
 
 describe('escaped results', function() {
   it('should return an array for a simple object with keys containing the seperator', function() {
-    var obj = {'A.a':  'A', 'B.b': 'B', 'C.c': 'c'};
+    var obj = {'A.a': 'A', 'B.b': 'B', 'C.c': 'c'};
     assert.deepEqual(stringify(obj), ['A\\.a', 'B\\.b', 'C\\.c']);
   });
 
