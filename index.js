@@ -1,17 +1,14 @@
 /*!
  * stringify-keys <https://github.com/doowb/stringify-keys>
  *
- * Copyright (c) 2014-2018, Brian Woodward.
+ * Copyright (c) 2014-present, Brian Woodward.
  * Released under the MIT License.
  */
 
 'use strict';
 
-var typeOf = require('kind-of');
-
 /**
- * Stringify the nested keys of `object` into dot-notation
- * object paths.
+ * Stringify the nested keys of `object` into dot-notation object paths.
  *
  * @param  {Object} `object` The object to stringify
  * @param  {Object|String} `options` Options with `separator` to use. Default is `.`.
@@ -23,32 +20,30 @@ module.exports = function(target, options) {
     options = { separator: options };
   }
 
-  var opts = Object.assign({ separator: '.' }, options);
-  var sep = opts.separator;
-  var acc = [];
+  let opts = Object.assign({ separator: '.' }, options);
+  let sep = opts.separator;
+  let values = {};
+  let keys = [];
 
   function stringify(obj, prev) {
-    var keys = Object.keys(obj);
+    for (let key of Object.keys(obj)) {
+      let val = obj[key];
+      key = (prev ? prev + sep : '') + esc(key, opts);
 
-    for (var i = 0; i < keys.length; i++) {
-      var key = keys[i];
-      var val = obj[key];
-      var type = typeOf(val);
-
-      key = (prev ? prev + sep : '') + escape(key, opts);
-
-      if (type === 'object' || type === 'array') {
+      if (Array.isArray(val) || val !== null && typeof val === 'object') {
         stringify(val, key);
+      } else {
+        keys.push(key);
+        values[key] = val;
       }
-      acc.push(key);
     }
   }
 
   stringify(target);
-  return acc;
+  return opts.values ? values : keys;
 };
 
-function escape(key, options) {
+function esc(key, options) {
   if (typeof options.escape === 'function') {
     return options.escape(key, options);
   }
